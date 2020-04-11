@@ -60,7 +60,10 @@ HttpClient client=HttpClient.newHttpClient();
        LocationStats locationStat=new LocationStats();
        locationStat.setState(record.get("Province/State"));
        locationStat.setCountry(record.get("Country/Region"));
-       locationStat.setLatestTotalCases(Integer.parseInt(record.get(record.size()-1)));
+       int latestCases=Integer.parseInt(record.get(record.size()-1));
+       int previousCases=Integer.parseInt(record.get(record.size()-2));
+       locationStat.setLatestTotalCases(latestCases);
+       locationStat.setDiffFromPrevDay(latestCases-previousCases);
         System.out.println(locationStat);
         newStats.add(locationStat);
     }
