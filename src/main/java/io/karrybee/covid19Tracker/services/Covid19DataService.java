@@ -1,6 +1,7 @@
 package io.karrybee.covid19Tracker.services;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -20,6 +21,12 @@ public class Covid19DataService {
 */
 
 //this method converts the string into the URI
+/*
+Tells the method to run after some time .
+* denotes sec,min,hrs,day,week,year.
+this methods runs each and every second
+ */
+@Scheduled(cron="******")
     public void fetchData() throws IOException,InterruptedException {
 
         //create the request using builder pattern
