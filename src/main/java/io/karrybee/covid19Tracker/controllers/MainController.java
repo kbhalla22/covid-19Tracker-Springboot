@@ -22,8 +22,11 @@ public class MainController {
     take stream and sum it up.
      */
     int totalReportedCases= allStats.stream().mapToInt(stat->stat.getLatestTotalCases()).sum();
+    int totalNewCases= allStats.stream().mapToInt(stat1->stat1.getDiffFromPrevDay()).sum();
+
     model.addAttribute("locationStats",allStats);
     model.addAttribute("totalReportedCases",totalReportedCases);
+    model.addAttribute("totalNewCases",totalNewCases);
 
         return "home";
     }
