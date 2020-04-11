@@ -1,4 +1,6 @@
 package io.karrybee.covid19Tracker.services;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -25,7 +27,15 @@ HttpClient client=HttpClient.newHttpClient();
         HttpResponse<String> httpResponse =client.send(request, HttpResponse.BodyHandlers.ofString());
 
         //testing the string
+    //Can be be converted to some objects(string)using commons library
         System.out.println(httpResponse.body());
+
+    Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
+    for (CSVRecord record : records) {
+        String id = record.get("ID");
+        String customerNo = record.get("CustomerNo");
+        String name = record.get("Name");
+    }
 
     }
 
