@@ -63,7 +63,7 @@ HttpClient client=HttpClient.newHttpClient();
        int latestCases=Integer.parseInt(record.get(record.size()-1));
        int previousCases=Integer.parseInt(record.get(record.size()-2));
        locationStat.setLatestTotalCases(latestCases);
-       locationStat.setDiffFromPrevDay(latestCases-previousCases);
+       locationStat.setDiffFromPrevDay(latestCases-previousCases );
         System.out.println(locationStat);
         newStats.add(locationStat);
     }
